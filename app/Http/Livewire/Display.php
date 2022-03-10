@@ -27,7 +27,7 @@ class Display extends Component
                     ->orWhere('can', 'LIKE', "I-%%")
                     ->orWhere('can', 'LIKE', "U0%%")
                     ->orWhere('can', 'LIKE', "E0%%");
-            })->count('id');
+            })->count('sid');
 
         $pt = new PrayerTimes('ISNA');
         $times = $pt->getTimesForToday(2.9264, 101.6964, 'Asia/Kuala_Lumpur', $elevation = null, $latitudeAdjustmentMethod = PrayerTimes::LATITUDE_ADJUSTMENT_METHOD_ANGLE, $midnightMode = PrayerTimes::MIDNIGHT_MODE_STANDARD, $format = PrayerTimes::TIME_FORMAT_24H);

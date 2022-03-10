@@ -23,10 +23,10 @@ class Display extends Component
 
         $this->count = Parking1::where('state', 0)
             ->where(function ($query) {
-                return $query->where('can', 'LIKE', 'M-%%')
-                    ->orWhere('can', 'LIKE', 'I-%%')
-                    ->orWhere('can', 'LIKE', 'U0%%')
-                    ->orWhere('can', 'LIKE', 'E0%%');
+                return $query->where('can', 'LIKE', "M-%%")
+                    ->orWhere('can', 'LIKE', "I-%%")
+                    ->orWhere('can', 'LIKE', "U0%%")
+                    ->orWhere('can', 'LIKE', "E0%%");
             })->count('id');
 
         $pt = new PrayerTimes('ISNA');

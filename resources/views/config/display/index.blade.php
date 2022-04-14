@@ -25,7 +25,9 @@
             <form action="{{ route('config.upload') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="p-8">
-                    <input type="text" name="greeting" placeholder="Greeting Message" class="w-full rounded-xl text-5xl p-4">
+                    <input type="text" name="greeting" placeholder="Greeting" class="w-full rounded-xl text-5xl p-4 my-1">
+                    <input type="text" name="message" placeholder="Message" class="w-full rounded-xl text-5xl p-4 my-1">
+                    <input type="text" name="info" placeholder="Info" class="w-full rounded-xl text-5xl p-4 my-1">
 
                     <p class="dark:text-white text-3xl py-4">Background Image</p>
                     <input type="file" name="image" class="w-full text-5xl dark:text-white mb-8">

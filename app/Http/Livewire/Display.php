@@ -12,14 +12,18 @@ class Display extends Component
 {
     public $times;
     public $greeting;
+    public $message;
+    public $info;
     public $count;
 
     public function render()
     {
         $jsonString = Storage::disk('public')->get('config.json');
-        $data = json_decode(trim($jsonString));
+        $data = json_decode($jsonString);
 
         $this->greeting = $data->greeting;
+        $this->message = $data->message;
+        $this->info = $data->info;
 
         switch($_SERVER['REMOTE_ADDR']){
             // South Car. 78,79,80,81

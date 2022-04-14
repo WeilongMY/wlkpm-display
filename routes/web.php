@@ -17,5 +17,5 @@ Route::get('/', function () {
     return view('display');
 });
 
-Route::get('/config/display', [\App\Http\Controllers\DisplayController::class, 'index']);
+Route::get('/debug', [\App\Http\Controllers\DisplayController::class, 'index']);
 Route::post('/config/upload', [\App\Http\Controllers\DisplayController::class, 'uploadImage'])->name('config.upload');

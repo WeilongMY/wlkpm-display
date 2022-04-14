@@ -39,6 +39,28 @@ class DisplayController extends Controller
             Storage::disk('public')->put('config.json',stripslashes($newJsonString));
         }
 
-        return view('display');
+        if($request->message) {
+            $jsonString = Storage::disk('public')->get('config.json');
+            $data = json_decode(trim($jsonString));
+
+            $data->message = $request->message;
+
+            $newJsonString = json_encode($data, JSON_PRETTY_PRINT);
+
+            Storage::disk('public')->put('config.json',stripslashes($newJsonString));
+        }
+
+        if($request->info) {
+            $jsonString = Storage::disk('public')->get('config.json');
+            $data = json_decode(trim($jsonString));
+
+            $data->info = $request->info;
+
+            $newJsonString = json_encode($data, JSON_PRETTY_PRINT);
+
+            Storage::disk('public')->put('config.json',stripslashes($newJsonString));
+        }
+
+        return redirect('/');
     }
 }

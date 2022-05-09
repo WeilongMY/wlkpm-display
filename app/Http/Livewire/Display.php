@@ -52,7 +52,7 @@ class Display extends Component
                         return $query->where('can', 'LIKE', "M-%%")
                             ->orWhere('can', 'LIKE', "I-%%")
                             ->orWhere('can', 'LIKE', "U0%%")
-                            ->orWhere('can', 'LIKE', "E0%%");
+                            ->orWhere('can', 'LIKE', "E-%%");
                     })->count('sid');
                 break;
             // Rooftop Car. 34,35,82,83
@@ -68,7 +68,7 @@ class Display extends Component
                         return $query->where('can', 'LIKE', "M-%%")
                             ->orWhere('can', 'LIKE', "I-%%")
                             ->orWhere('can', 'LIKE', "U0%%")
-                            ->orWhere('can', 'LIKE', "E0%%");
+                            ->orWhere('can', 'LIKE', "E-%%");
                     })->count('sid');
                 break;
             // North Car. 30,31,32,33
@@ -84,7 +84,7 @@ class Display extends Component
                         return $query->where('can', 'LIKE', "M-%%")
                             ->orWhere('can', 'LIKE', "I-%%")
                             ->orWhere('can', 'LIKE', "U0%%")
-                            ->orWhere('can', 'LIKE', "E0%%");
+                            ->orWhere('can', 'LIKE', "E-%%");
                     })->count('sid');
                 break;
             default:
@@ -93,7 +93,7 @@ class Display extends Component
                         return $query->where('can', 'LIKE', "M-%%")
                             ->orWhere('can', 'LIKE', "I-%%")
                             ->orWhere('can', 'LIKE', "U0%%")
-                            ->orWhere('can', 'LIKE', "E0%%");
+                            ->orWhere('can', 'LIKE', "E-%%");
                     })->count('sid');
         }
 

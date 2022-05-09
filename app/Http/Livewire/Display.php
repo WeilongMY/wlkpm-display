@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Integrations\PrayerTimes\PrayerTimes;
 use App\Models\Parking1;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
@@ -24,6 +25,18 @@ class Display extends Component
         $this->greeting = $data->greeting;
         $this->message = $data->message;
         $this->info = $data->info;
+
+        try {
+            while (1) {
+                $connect = DB::connection()->getPdo();
+
+                if ($connect) {
+                    break;
+                }
+            }
+        } catch (\Exception $e) {
+            die("Could not connect to the database.  Please check your configuration. error:" . $e );
+        }
 
         switch($_SERVER['REMOTE_ADDR']){
             // South Car. 78,79,80,81

@@ -20,12 +20,9 @@ class Display extends Component
 
     public function render()
     {
-        $jsonString = Storage::disk('public')->get('config.json');
-        $data = json_decode($jsonString);
-
-        $this->greeting = $data->greeting;
-        $this->message = $data->message;
-        $this->info = $data->info;
+        $this->greeting = config('display.greeting');
+        $this->message = config('display.message');
+        $this->info = config('display.info');
 
         try {
             while (1) {
@@ -116,10 +113,6 @@ class Display extends Component
         } else {
             $this->count = $availableLots;
         }
-//        $pt = new PrayerTimes('ISNA');
-//        $times = $pt->getTimesForToday(2.9264, 101.6964, 'Asia/Kuala_Lumpur', $elevation = null, $latitudeAdjustmentMethod = PrayerTimes::LATITUDE_ADJUSTMENT_METHOD_ANGLE, $midnightMode = PrayerTimes::MIDNIGHT_MODE_STANDARD, $format = PrayerTimes::TIME_FORMAT_24H);
-//
-//        $this->times = Arr::except($times, ['Imsak', 'Sunrise', 'Sunset', 'Midnight']);
 
         return view('livewire.display');
     }

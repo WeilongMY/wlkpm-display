@@ -18,4 +18,3 @@ Route::get('/', function () {
 });
 
 Route::get('/debug', [\App\Http\Controllers\DisplayController::class, 'index']);
-Route::post('/config/upload', [\App\Http\Controllers\DisplayController::class, 'uploadImage'])->name('config.upload');

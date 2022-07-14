@@ -46,39 +46,41 @@ class Display extends Component
         $this->info = config('display.info');
 
         try {
-            DB::connection()->getPdo();
+            $pdo = DB::connection()->getPdo();
 
-            switch(request()->ip()){
-                // South Car(gid 4). 78,79,80,81
-                case "192.168.1.190":
-                    $totalLots = $this->getTotalLots(4);
-                    $sids = ['78', '79', '80', '81'];
-                    $totalOccupied = $this->getTotalOccupied($sids);
-                    break;
-                // Rooftop Car(gid 1). 34,35,82,83
-                case "192.168.1.191":
-                    $totalLots = $this->getTotalLots(1);
-                    $sids = ['34', '35', '82', '83'];
-                    $totalOccupied = $this->getTotalOccupied($sids);
-                    break;
-                // North Car(gid 2). 30,31,32,33
-                case "192.168.1.192":
-                    $totalLots = $this->getTotalLots(2);
-                    $sids = ['30', '31', '32', '33'];
-                    $totalOccupied = $this->getTotalOccupied($sids);
-                    break;
-                default:
-                    $totalLots = $this->getTotalLots(0);
-                    $sids = [0];
-                    $totalOccupied = $this->getTotalOccupied($sids);
-            }
+            if($pdo) {
+                switch(request()->ip()){
+                    // South Car(gid 4). 78,79,80,81
+                    case "192.168.1.190":
+                        $totalLots = $this->getTotalLots(4);
+                        $sids = ['78', '79', '80', '81'];
+                        $totalOccupied = $this->getTotalOccupied($sids);
+                        break;
+                    // Rooftop Car(gid 1). 34,35,82,83
+                    case "192.168.1.191":
+                        $totalLots = $this->getTotalLots(1);
+                        $sids = ['34', '35', '82', '83'];
+                        $totalOccupied = $this->getTotalOccupied($sids);
+                        break;
+                    // North Car(gid 2). 30,31,32,33
+                    case "192.168.1.192":
+                        $totalLots = $this->getTotalLots(2);
+                        $sids = ['30', '31', '32', '33'];
+                        $totalOccupied = $this->getTotalOccupied($sids);
+                        break;
+                    default:
+                        $totalLots = $this->getTotalLots(0);
+                        $sids = [0];
+                        $totalOccupied = $this->getTotalOccupied($sids);
+                }
 
-            $availableLots = $totalLots->LIMIT1 - $totalOccupied;
+                $availableLots = $totalLots->LIMIT1 - $totalOccupied;
 
-            if ($availableLots < 0) {
-                $this->count = 0;
-            } else {
-                $this->count = $availableLots;
+                if ($availableLots > 0) {
+                    $this->count = $availableLots;
+                }
+            } else{
+                Log::error("Database error");
             }
         } catch (\Exception $e) {
             Log::error("Database error ". $e);

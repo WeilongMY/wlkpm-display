@@ -12,9 +12,6 @@ use Livewire\Component;
 class Display extends Component
 {
     public $times;
-    public $greeting;
-    public $message;
-    public $info;
     public $count = 0;
     public $datetime;
 
@@ -41,10 +38,6 @@ class Display extends Component
 
     public function render()
     {
-        $this->greeting = config('display.greeting');
-        $this->message = config('display.message');
-        $this->info = config('display.info');
-
         try {
             $pdo = DB::connection()->getPdo();
 

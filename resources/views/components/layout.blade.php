@@ -20,5 +20,12 @@
 <body class="antialiased" style="background: url('/img/skin/background.png')">
     {{ $slot }}
     @livewireScripts
+    <script>
+        window.livewire.onError(statusCode => {
+            if (statusCode === 500) {
+                return false;
+            }
+        })
+    </script>
 </body>
 </html>

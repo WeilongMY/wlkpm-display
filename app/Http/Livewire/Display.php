@@ -11,9 +11,14 @@ use Livewire\Component;
 
 class Display extends Component
 {
-    public $times;
-    public $count = 0;
+    public $count;
     public $datetime;
+
+    public function mount()
+    {
+        $this->datetime = Carbon::now()->format('l, d M Y')." | ".Carbon::now()->format('H:i');
+        $this->count = 0;
+    }
 
     public function getTotalLots($groupId)
     {
@@ -78,8 +83,6 @@ class Display extends Component
         } catch (\Exception $e) {
             Log::error("Database error ". $e);
         }
-
-        $this->datetime = Carbon::now()->format('l, d M Y')." | ".Carbon::now()->format('H:i');
 
         return view('livewire.display');
     }

@@ -77,6 +77,8 @@ class Display extends Component
                 if ($availableLots > 0) {
                     $this->count = $availableLots;
                 }
+
+                $this->datetime = Carbon::now()->format('l, d M Y')." | ".Carbon::now()->format('H:i');
             } else{
                 Log::error("Database error");
             }

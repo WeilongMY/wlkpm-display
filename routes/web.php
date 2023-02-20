@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('display');
+    return view('display2');
 });
 
 Route::get('/debug', [\App\Http\Controllers\DisplayController::class, 'index']);
